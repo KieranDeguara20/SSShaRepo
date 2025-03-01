@@ -9,13 +9,16 @@ use App\Models\College;
 class StudentController extends Controller
 {
     public function index() {
-        $students = Student::orderBy('name')->pluck('name', 'id')->prepend('All Students', '');
-        if (request('student_id') == null){
-            $students= Student::orderBy('name')->get();
-        } else{
-            $students = Student::where('student_id', request('student_id'))->get();
+        $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
+        $studentsQuery = Student::orderBy('name', request('sort', 'asc')); // Default to ascending order
+    
+        if (request('college_id')) {
+            $studentsQuery->where('college_id', request('college_id'));
         }
-        return view('students.index', compact('students'));
+    
+        $students = $studentsQuery->get();
+    
+        return view('students.index', compact('students', 'colleges'));
     }
  
     public function create() {
