@@ -14,16 +14,17 @@
                   </div>
                 </div>
               <div class="card-body">
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 @include('students._filter')
                 @include('students._sort')
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <a href="{{ route('students.index', array_merge(request()->all(), ['sort' => request('sort') == 'asc' ? 'desc' : 'asc'])) }}">
-                                    Name
-                                </a>
-                            </th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Date of Birth</th>
@@ -31,9 +32,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($message = @session('message'))
-                            <div class="alert alert-success">{{ $message }}</div>
-                        @endif
                         @foreach($students as $student)
                         <tr>
                             <td>{{ $student->name }}</td>

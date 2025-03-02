@@ -11,16 +11,16 @@ class StudentController extends Controller
     public function index() {
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
         $studentsQuery = Student::orderBy('name', request('sort', 'asc')); // Default to ascending order
-    
+
         if (request('college_id')) {
             $studentsQuery->where('college_id', request('college_id'));
         }
-    
+
         $students = $studentsQuery->get();
-    
+
         return view('students.index', compact('students', 'colleges'));
     }
- 
+
     public function create() {
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
         return view('students.create', compact('colleges'));
@@ -30,7 +30,7 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|digits_between:8,12',
+            'phone' => 'required|digits:8',
             'dob' => 'required|date',
             'college_id' => 'required|exists:colleges,id'
         ]);
@@ -38,19 +38,17 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('message', 'Student created successfully');
     }
 
-    public function edit($id)
-    {
-        $student = Student::find($id);
+    public function edit($id) {
+        $student = Student::findOrFail($id);
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
         return view('students.edit', compact('colleges', 'student'));
     }
 
-    public function editStudents(Request $request, $id)
-    {
+    public function editStudents(Request $request, $id) {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|digits_between:8,12',
+            'phone' => 'required|digits:8',
             'dob' => 'required|date',
             'college_id' => 'required|exists:colleges,id'
         ]);
@@ -58,14 +56,12 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('message', 'Student updated successfully');
     }
 
-    public function view($id)
-    {
+    public function view($id) {
         $student = Student::findOrFail($id);
         return view('students.view', compact('student'));
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Student::destroy($id);
         return redirect()->route('students.index')->with('message', 'Student deleted successfully');
     }

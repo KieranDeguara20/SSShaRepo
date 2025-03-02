@@ -12,48 +12,47 @@ class CollegeController extends Controller
         if (request('college_id') == null){
             $colleges= College::orderBy('name')->get();
         } else{
-            $collages = College::where('college_id', request('college_id'))->get();
+            $colleges = College::where('college_id', request('college_id'))->get();
         }
         return view('colleges.index', compact('colleges'));
     }
- 
+
     public function create() {
         return view('colleges.create');
     }
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:colleges,name',
             'address' => 'required'
         ]);
+    
         College::create($request->all());
         return redirect()->route('colleges.index')->with('message', 'College created successfully');
     }
 
-    public function edit($id)
-    {
-        $college = College::where('id', $id)->first();
+    public function edit($id) {
+        $college = College::findOrFail($id);
         return view('colleges.edit', compact('college'));
     }
 
-    public function editColleges(Request $request, $id)
-    {
+
+    public function editColleges(Request $request){
         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
+            'name'=>'required|unique:colleges',
+            'address'=>'required',
         ]);
-        College::where('id', $id)->update($request->only(['name', 'address']));
-        return redirect()->route('colleges.index')->with('message', 'College updated successfully');
+
+        College::create($request->all());
+        return redirect()->route('colleges.index')->with('message', 'College has been added successfully!');
     }
 
-    public function view($id)
-    {
+    public function view($id) {
         $college = College::findOrFail($id);
         return view('colleges.view', compact('college'));
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         College::destroy($id);
         return redirect()->route('colleges.index')->with('message', 'College deleted successfully');
     }
