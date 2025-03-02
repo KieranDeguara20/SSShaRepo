@@ -43,6 +43,18 @@ class CollegeController extends Controller
             'address' => 'required',
         ]);
         College::where('id', $id)->update($request->only(['name', 'address']));
-        return redirect()->route('colleges.index')->with('success', 'College updated successfully');
+        return redirect()->route('colleges.index')->with('message', 'College updated successfully');
+    }
+
+    public function view($id)
+    {
+        $college = College::findOrFail($id);
+        return view('colleges.view', compact('college'));
+    }
+
+    public function destroy($id)
+    {
+        College::destroy($id);
+        return redirect()->route('colleges.index')->with('message', 'College deleted successfully');
     }
 }

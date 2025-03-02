@@ -35,7 +35,7 @@ class StudentController extends Controller
             'college_id' => 'required|exists:colleges,id'
         ]);
         Student::create($request->all());
-        return redirect()->route('students.index')->with('success', 'Student created successfully');
+        return redirect()->route('students.index')->with('message', 'Student created successfully');
     }
 
     public function edit($id)
@@ -55,12 +55,18 @@ class StudentController extends Controller
             'college_id' => 'required|exists:colleges,id'
         ]);
         Student::where('id', $id)->update($request->only(['name', 'email', 'phone', 'dob', 'college_id']));
-        return redirect()->route('students.index')->with('success', 'Student updated successfully');
+        return redirect()->route('students.index')->with('message', 'Student updated successfully');
+    }
+
+    public function view($id)
+    {
+        $student = Student::findOrFail($id);
+        return view('students.view', compact('student'));
     }
 
     public function destroy($id)
     {
         Student::destroy($id);
-        return redirect()->route('students.index')->with('success', 'Student deleted successfully');
+        return redirect()->route('students.index')->with('message', 'Student deleted successfully');
     }
 }

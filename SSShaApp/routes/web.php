@@ -27,6 +27,9 @@ Route::get('/colleges/create', [CollegeController::class, 'create'])->name('coll
 
 Route::get('/colleges/{id}/edit', [CollegeController::class, 'edit'])->name('colleges.edit');
 Route::post('/colleges/{id}', [CollegeController::class, 'editColleges'])->name('colleges.editCollages'); // update a college
+Route::get('/colleges/{id}/view', [CollegeController::class, 'view'])->name('colleges.view'); // view a college
+
+Route::get('/colleges/{id}', [CollegeController::class, 'destroy'])->name('colleges.destroy'); // delete a college
 
 
 //Student routes
@@ -37,6 +40,7 @@ Route::get('/students/create', [StudentController::class, 'create'])->name('stud
 
 Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
 Route::post('/students/{id}', [StudentController::class, 'editStudents'])->name('students.editStudents'); // update a student
+Route::get('/students/{id}/view', [StudentController::class, 'view'])->name('students.view'); // view a student
 
 
 Route::get('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy'); // delete a student
