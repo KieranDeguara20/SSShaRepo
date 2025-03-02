@@ -12,15 +12,7 @@
               <div class="card-body">
                 <form action="{{ route('colleges.store') }}" method="POST">
                     @csrf
-                    <div>
-                        <label for="name">Name: </label>
-                        <input type="text" name="name" id="name">
-                    </div>
-                    <div>
-                        <label for="address">Address: </label>
-                        <input type="text" name="address" id="address">
-                    </div>
-                    <button type="submit">Create</button>
+                    @include('colleges._create')
                 </form>
               </div>
             </div>
