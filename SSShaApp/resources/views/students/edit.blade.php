@@ -12,7 +12,7 @@
               <div class="card-body">
                 <form action="{{ route('students.editStudents', $student->id) }}" method="POST">
                     @csrf
-                    @include ('students._create')
+                    @include ('students._edit')
                 </form>
               </div>
             </div>
