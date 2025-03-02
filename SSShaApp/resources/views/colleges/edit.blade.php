@@ -10,7 +10,7 @@
                 <strong>Edit College</strong>
               </div>           
               <div class="card-body">
-                <form action="{{ route('colleges.editCollages', $college->id) }}" method="POST">
+                <form action="{{ route('colleges.editColleges', $college->id) }}" method="POST">
                     @csrf
                     @include('colleges._edit')
                 </form>
