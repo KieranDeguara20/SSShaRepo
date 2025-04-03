@@ -1,47 +1,73 @@
 body {
-	font-family: 'Varela Round', sans-serif;
-	background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
 }
 
 .navbar {
-	background: #fff;
-	-moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
-	box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
-	padding: 10px 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    border-bottom: 2px solid #e3e6ea;
 }
 
 .navbar .navbar-brand {
-	font-weight: bold;
-	letter-spacing: -1px;
-	font-size: 20px;
-	color: #dd5638;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-size: 22px;
+    color: #df5f5f;
 }
 
 .navbar-light .navbar-nav .active>.nav-link {
-    color: #435d7d;
+    color: #1d3557;
+    font-weight: 600;
 }
 
 .fileinput {
-	text-align: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px dashed #9ececf;
+    border-radius: 8px;
+    background-color: #ffffff;
 }
 
 .btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 20px;
+    color: #000000;
+    transition: background-color 0.3s ease;
 }
 
 ul.pagination {
-	margin-bottom: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+ul.pagination li a {
+    color: #457b9d;
+    padding: 8px 12px;
+    border: 1px solid #e5e9ee;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ul.pagination li a:hover {
+    background-color: #4b7fa0;
+    color: #fff;
 }
 
 .card-title {
     color: #fff;
-    background: #435d7d;
-    padding: 16px 20px;
+    background: #253c5f;
+    padding: 18px 24px;
+    border-radius: 6px 6px 0 0;
+    font-size: 18px;
+    font-weight: 600;
 }

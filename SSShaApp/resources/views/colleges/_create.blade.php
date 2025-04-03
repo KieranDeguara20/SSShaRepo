@@ -22,4 +22,4 @@
     </div>
 </div>
 
-<button type="submit">Create</button>
+<button type="submit" class="btn btn-primary">Create</button>

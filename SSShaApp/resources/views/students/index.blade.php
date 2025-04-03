@@ -8,7 +8,7 @@
                 <div class="card-header card-title">
                   <div class="d-flex align-items-center">
                     <h2 class="mb-0">All Students</h2>
-                    <div class="ml-auto">
+                    <div class="ms-auto">
                       <a href="{{ route('students.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
                     </div>
                   </div>
