@@ -23,8 +23,6 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
                             <th>Address</th>
                         </tr>
                     </thead>
@@ -32,8 +30,6 @@
                         @foreach($colleges as $college)
                         <tr>
                             <td>{{ $college->name }}</td>
-                            <td>{{ $college->email }}</td>
-                            <td>{{ $college->phone }}</td>
                             <td>{{ $college->address }}</td>
                             <td>
                                 <a href="{{ route('colleges.view', $college->id) }}" class="btn btn-sm btn-circle btn-outline-info" title="View"><i class="fa fa-eye"></i></a>
